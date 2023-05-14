@@ -1,0 +1,84 @@
+#TYPES
+type Response {
+	succes: Boolean
+	message: String
+	status: String
+	data: AWSJSON
+}
+
+input createProductInput {
+	active: Boolean
+	name: String
+	status: String
+	stock: Number
+	unitsSold: Number
+	idCurrency: Number
+	idBrand: String
+	idCategory: String
+	idProvider: String
+	total: Number
+	cost: Number
+	totalARS: Number
+	costARS: Number
+	iva: [
+		{
+			id: Number
+			percentage: Number
+		},
+	];
+	description: String
+	observations: String
+	dateCreation: String
+	userCreation: String
+	dateUpdate: String
+	userUpdate: String
+	dateDelete: String
+	userDelete: String
+}
+
+input updateProductInput {
+	id: String
+	active: Boolean
+	name: String
+	status: String
+	stock: Number
+	unitsSold: Number
+	idCurrency: Number
+	idBrand: String
+	idCategory: String
+	idProvider: String
+	total: Number
+	cost: Number
+	totalARS: Number
+	costARS: Number
+	iva: [
+		{
+			id: Number
+			percentage: Number
+		},
+	];
+	description: String
+	observations: String
+	dateCreation: String
+	userCreation: String
+	dateUpdate: String
+	userUpdate: String
+	dateDelete: String
+	userDelete: String
+}
+
+input filters {
+	dateOfCreation: String
+}
+
+# MUTATION Y QUERYS
+type Query {
+	getProductId(productId: ID!): Response
+	getProducts(filters: filters): Response
+}
+
+type Mutation {
+	createProduct(product: createProductInput!): Response
+	updateProduct(product: updateProductInput!): Response
+	deleteProduct(productId: productId!): Response
+}
